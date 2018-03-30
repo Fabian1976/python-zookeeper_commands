@@ -63,7 +63,7 @@ def main():
   zk = KazooClient(hosts=zkhost)
   zk.start()
   try:
-    zk.get(zk_base_path + '/' + default_environment)
+    zk.get(zk_path)
     if query_yes_no("The puppet defaults allready exist. Do you wish to override them with the new defaults from '%s'?" % yamlfile):
       zk.delete(zk_base_path + '/' + default_environment, recursive=True)
       raise kazoo.exceptions.NoNodeError
